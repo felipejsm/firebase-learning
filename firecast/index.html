@@ -4,4 +4,24 @@
         <meta charset="utf-8">
         <title>Firebase Quick Start</title>
     </head>
+    <body>
+        <h1 id="bigOne"></h1>
+    </body>
+
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyB4ChqpIS8fUANIg2684bncfVXiWE5zMNk",
+        authDomain: "web-quickstart-dc5d8.firebaseapp.com",
+        databaseURL: "https://web-quickstart-dc5d8.firebaseio.com",
+        projectId: "web-quickstart-dc5d8",
+        storageBucket: "web-quickstart-dc5d8.appspot.com",
+        messagingSenderId: "192940399504"
+    };
+    firebase.initializeApp(config);
+    var bigOne = document.getElementById('bigOne');
+    var dbRef = firebase.database().ref().child('text');
+    dbRef.on('value', snap => bigOne.innerText = snap.val());
+    </script>
 </html>
