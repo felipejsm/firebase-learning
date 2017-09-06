@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Firebase Quick Start</title>
+        <style media="screen">
+            body {
+                display: flex;
+                min-height: 100vh;
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+            #uploader {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 50%;
+                margin-bottom: 10px
+            }
+        </style>
+    </head>
+    <body>
+        <progress value="0" max="100" id="uploader">
+            0%
+        </progress>
+        <input type="file" value="upload" id="fileButton" />
+    </body>
+
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyB4ChqpIS8fUANIg2684bncfVXiWE5zMNk",
+        authDomain: "web-quickstart-dc5d8.firebaseapp.com",
+        databaseURL: "https://web-quickstart-dc5d8.firebaseio.com",
+        projectId: "web-quickstart-dc5d8",
+        storageBucket: "web-quickstart-dc5d8.appspot.com",
+        messagingSenderId: "192940399504"
+    };
+    firebase.initializeApp(config);
+    //Get elements
+    var uploader = document.getElementById('uploader');
+    var fileButton = document.getElementById('fileButton');
+    // 'Ouvir' evento do doc selecionado
+    fileButton.addEventListener('change', function(e) {
+        //Get file
+            var file = e.target.files[0];
+        //Create a storage ref - folder_name/file_name
+        var storageRef =  firebase.storage().ref('sweet_gifs/' + file.name);
+        //upload file
+        var task = storageRef.put(file);
+        //Update progress bar
+        task.on('state_changed',
+            function progress(snapshot) {
+                var percentage = (snapshot.bytesTransferred/
+                    snapshot.totalBytes) * 100;
+                    uploader.value = percentage;
+            },
+            function error(err) {
+
+            },
+            function complete() {
+
+            }
+        )
+        /*
+        service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
+        */
+    });
+    
+    </script>
+</html>
