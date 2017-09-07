@@ -3,18 +3,23 @@
     <head>
         <meta charset="utf-8">
         <title>Firebase Quick Start</title>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     </head>
     <body>
         <h1 id="bigOne"></h1>
         <div class="container">
-            <input  id="txtEmail" type="email" placeholder="Email">
-            <input id="txtPassword" type="password" placeholder="Password">
-            <button id="btnLogin" class="btn btn-action">Log In</button>
-            <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
-            <button id="btnLogout" class="btn btn-action hide">Log Out</button>
-            
+            <div class="row">
+                <input  id="txtEmail" class="form-control"  type="email" placeholder="Email">
+            </div>
+            <div class="row">
+                <input id="txtPassword" class="form-control"  type="password" placeholder="Password">
+            </div>
+            <div class="row">
+                <button id="btnLogin" class="btn btn-primary">Log In</button>
+                <button id="btnSignUp" class="btn btn-info">Sign Up</button>
+                <button id="btnLogout" class="btn btn-primary hide">Log Out</button>
+            </div>
         </div>
         
     </body>
