@@ -8,4 +8,19 @@
         messagingSenderId: "192940399504"
     };
     firebase.initializeApp(config);
+
+    const txtEmail = document.getElementById('txtEmail');
+    const txtPassword = document.getElementById('txtPassword');
+    const btnLogin = document.getElementById('btnLogin');
+    const btnSignUp = document.getElementById('btnSignUp');
+    const btnLogout = document.getElementById('btnLogout');
+
+    btnLogin.addEventListener('click', e => {
+        const email = txtEmail.value;
+        const password = txtPassword.value;
+        const auth = firebase.auth();
+
+        const promise = auth.signInWithEmailAndPassword(email, password);
+        promise.catch(e => console.log(e.message));
+    });
 }());
