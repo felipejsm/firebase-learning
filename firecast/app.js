@@ -25,10 +25,21 @@
     });
 
     btnSignUp.addEventListener('click', e => {
+        //Firebase não valida email, responsabilidade do dev
         const email = txtEmail.value;
         const password = txtPassword.value;
         const auth = firebase.auth();
 
         const promise = auth.createUserWithEmailAndPassword(email, password);
+    })
+
+    //Para checar alterações realtime da autenticação
+    // firebaseUser -> se estiver loggado estará valorado e, caso contrário, null
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        if(firebaseUser) {
+            console.log(firebaseUser);
+        } else {
+            console.log("not logged in");
+        }
     })
 }());
