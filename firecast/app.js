@@ -33,13 +33,18 @@
         const promise = auth.createUserWithEmailAndPassword(email, password);
     })
 
+    btnLogout.addEventListener('click', e => {
+        firebase.auth().signOut();
+    })
     //Para checar alterações realtime da autenticação
     // firebaseUser -> se estiver loggado estará valorado e, caso contrário, null
     firebase.auth().onAuthStateChanged(firebaseUser => {
         if(firebaseUser) {
             console.log(firebaseUser);
+            btnLogout.classList.remove('hide');
         } else {
             console.log("not logged in");
+            btnLogout.classList.add('hide');
         }
     })
 }());
