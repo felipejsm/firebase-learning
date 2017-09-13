@@ -8,43 +8,11 @@
         messagingSenderId: "192940399504"
     };
     firebase.initializeApp(config);
+    const preObject = document.getElementById("object");
+    //create reference
+    const dbRefObject = firebase.database().ref().child('object');
 
-    const txtEmail = document.getElementById('txtEmail');
-    const txtPassword = document.getElementById('txtPassword');
-    const btnLogin = document.getElementById('btnLogin');
-    const btnSignUp = document.getElementById('btnSignUp');
-    const btnLogout = document.getElementById('btnLogout');
-
-    btnLogin.addEventListener('click', e => {
-        const email = txtEmail.value;
-        const password = txtPassword.value;
-        const auth = firebase.auth();
-
-        const promise = auth.signInWithEmailAndPassword(email, password);
-        promise.catch(e => console.log(e.message));
-    });
-
-    btnSignUp.addEventListener('click', e => {
-        //Firebase não valida email, responsabilidade do dev
-        const email = txtEmail.value;
-        const password = txtPassword.value;
-        const auth = firebase.auth();
-
-        const promise = auth.createUserWithEmailAndPassword(email, password);
-    })
-
-    btnLogout.addEventListener('click', e => {
-        firebase.auth().signOut();
-    })
-    //Para checar alterações realtime da autenticação
-    // firebaseUser -> se estiver loggado estará valorado e, caso contrário, null
-    firebase.auth().onAuthStateChanged(firebaseUser => {
-        if(firebaseUser) {
-            console.log(firebaseUser);
-            btnLogout.classList.remove('hide');
-        } else {
-            console.log("not logged in");
-            btnLogout.classList.add('hide');
-        }
-    })
-}());
+    //Sync object changes
+    // first param is the event param that will evoke the callback function
+    dbRefObject.on('value', snap => console.log(snap.val()));
+}()); 
