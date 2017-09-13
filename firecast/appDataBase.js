@@ -14,5 +14,7 @@
 
     //Sync object changes
     // first param is the event param that will evoke the callback function
-    dbRefObject.on('value', snap => console.log(snap.val()));
+    dbRefObject.on('value', snap => {
+        preObject.innerText = JSON.stringify(snap.val(),null,3);
+    });
 }()); 
