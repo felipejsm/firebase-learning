@@ -12,9 +12,14 @@
 
   <!-- AngularFire -->
   <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+  <script src="app.js"></script>
   <title>FB Hosting</title>
 </head>
 <body ng-app="app">
-  
+  <div id="message" ng-controller="myCtrl as ctrl">
+    <pre>
+{{ctrl.object | json}}
+    </pre>
+  </div>
 </body>
 </html>
