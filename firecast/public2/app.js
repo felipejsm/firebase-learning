@@ -9,7 +9,7 @@
     };
     firebase.initializeApp(config);
     angular
-        .module('app',[firebase])
+        .module('app',['firebase'])
         .controller('myCtrl', function($firebaseObject) {
             const rootRef = firebase.database().ref().child('angular');
             const ref = rootRef.child('object');
